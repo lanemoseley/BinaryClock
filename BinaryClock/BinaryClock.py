@@ -1,4 +1,6 @@
 import pygame
+from pygame import display
+import sys
 from datetime import datetime
 
 ###############################################################################
@@ -40,6 +42,30 @@ def binary_time( time_24hr ):
     return;
 
 def main():
+    # Initialize Pygame
+    pygame.init()
+    size = 200, 100
+    window = pygame.display.set_mode(size)
+    display.set_caption("Binary Clock")
+
+    # Load Font
+    font = pygame.font.Font(None, 80)
+    text = 'Test'
+    #size = font.size(text)
+
+    render_text = font.render(text, 0, (250, 250, 250), (5, 5, 5))
+    window.blit(render_text, (0, 0))
+
+    pygame.display.flip()
+    run = True
+    while run:
+        
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                run = False
+
+
+    
     now = datetime.now()
     cur_time = str(now.hour) + ":" + str(now.minute)
     print(cur_time)

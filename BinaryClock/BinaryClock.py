@@ -1,7 +1,9 @@
 import pygame
 from datetime import datetime
 
-
+###############################################################################
+# TODO: Create GUI window to display the current time in binary format.       #
+###############################################################################
 
 def binary_time( time_24hr ):
     

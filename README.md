@@ -1,2 +1,2 @@
 # BinaryClock
-A Pygame application that displays the current, 24-hour time in binary format.
+A Python application that displays the current, 24-hour time in binary format.

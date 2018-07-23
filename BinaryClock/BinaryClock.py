@@ -1,76 +1,136 @@
-import pygame
-from pygame import display
-import sys
+from tkinter import *
 from datetime import datetime
 
-###############################################################################
-# TODO: Create GUI window to display the current time in binary format.       #
-###############################################################################
 
-def binary_time( time_24hr ):
+def binary_time( hours, minutes, seconds ):
     
     # Variables
-    switch = False
-    time = ""
-    b_time = ""
+    time = [hours, minutes, seconds]   
 
-    # Converting user input
-    for i, c in enumerate(time_24hr):
-        if time_24hr[i] == ':':
-            switch = True
-        elif switch:
-            time += time_24hr[i]
-        else:
-            time += time_24hr[i]
+    print("Input time: ", end = '')
+    print(time)
+
+    binary_clock = [["[ ]", "[ ]", "[ ]", "[ ]", "[ ]", "[ ]"],
+                    ["[ ]", "[ ]", "[ ]", "[ ]", "[ ]", "[ ]"],
+                    ["[ ]", "[ ]", "[ ]", "[ ]", "[ ]", "[ ]"],
+                    ["[ ]", "[ ]", "[ ]", "[ ]", "[ ]", "[ ]"]]
+
+    while time[0] > 0:
+        # Hours > 20 (Scalar)
+        if time[0] > 20:
+            binary_clock[2][0] = "[X]"
+            time[0] -= 20
+        # Hours > 10 (Scalar)
+        elif time[0] > 10:
+            binary_clock[3][0] = "[X]"
+            time[0] -= 10
+        # Hours < 10
+        elif time[0] % 8 == 0:
+            binary_clock[0][1] = "[X]"
+            time[0] -= 8
+        elif time[0] % 4 == 0:
+            binary_clock[1][1] = "[X]"
+            time[0] -= 4
+        elif time[0] % 2 == 0:
+            binary_clock[2][1] = "[X]"
+            time[0] -= 2
+        elif time[0] == 1:
+            binary_clock[3][1] = "[X]"
+            time[0] -= 1
     
-    time = int(time)
+    while time[1] > 0:
+        # Minutes
+        if time[1] > 50:
+            binary_clock[3][2] = "[X]" # 1
+            binary_clock[1][2] = "[X]" # 4
+            time[1] -= 50
+        elif time[1] > 40:
+            binary_clock[1][2] = "[X]" # 4
+            time[1] -= 40
+        elif time[1] > 30:
+            binary_clock[3][2] = "[X]" # 1
+            binary_clock[2][2] = "[X]" # 2
+            time[1] -= 30
+        elif time[1] > 20:
+            binary_clock[2][2] = "[X]" # 2
+            time[1] -= 20
+        elif time[1] > 10:
+            binary_clock[3][2] = "[X]" # 1
+            time[1] -= 10
+        # Minutes < 10
+        elif time[1] % 8 == 0:
+            binary_clock[0][3] = "[X]"
+            time[1] -= 8
+        elif time[1] % 4 == 0:
+            binary_clock[1][3] = "[X]"
+            time[1] -= 4
+        elif time[1] % 2 == 0:
+            binary_clock[2][3] = "[X]"
+            time[1] -= 2
+        elif time[1] % 1 == 0 and time[1] > 0:
+            binary_clock[3][3] = "[X]"
+            time[1] -= 1
+   
+    while time[2] > 0:
+        # Seconds
+        if time[2] > 50:
+            binary_clock[3][4] = "[X]" # 1
+            binary_clock[1][4] = "[X]" # 4
+            time[2] -= 50
+        elif time[2] > 40:
+            binary_clock[1][4] = "[X]" # 4
+            time[2] -= 40
+        elif time[2] > 30:
+            binary_clock[3][4] = "[X]" # 1
+            binary_clock[2][4] = "[X]" # 2
+            time[2] -= 30
+        elif time[2] > 20:
+            binary_clock[2][4] = "[X]" # 2
+            time[2] -= 20
+        elif time[2] > 10:
+            binary_clock[3][4] = "[X]" # 1
+            time[2] -= 10
+        # Seconds < 10
+        elif time[2] % 8 == 0:
+            binary_clock[0][5] = "[X]"
+            time[2] -= 8
+        elif time[2] % 4 == 0:
+            binary_clock[1][5] = "[X]"
+            time[2] -= 4
+        elif time[2] % 2 == 0:
+            binary_clock[2][5] = "[X]"
+            time[2] -= 2
+        elif time[2] % 1 == 0 and time[2] > 0:
+            binary_clock[3][5] = "[X]"
+            time[2] -= 1
+    
+    print("If correct, should be zero: ", end = '')
+    print(time)
 
-    # Converting integer time to binary time
-    i = 10
-    switch = False
-    while i >= 0 and time >= 0:
-        if pow(2, i) <= time:
-            b_time += "1"
-            time = time - pow(2, i)
-            switch = True
-        elif switch:
-            b_time += "0"
-        i -= 1
+    # Display Clock
+    print(binary_clock[0])
+    print(binary_clock[1])
+    print(binary_clock[2])
+    print(binary_clock[3])
 
-    print(b_time)
-
-    return;
+    return binary_clock;
 
 def main():
-    # Initialize Pygame
-    pygame.init()
-    size = 200, 100
-    window = pygame.display.set_mode(size)
-    display.set_caption("Binary Clock")
+   
 
-    # Load Font
-    font = pygame.font.Font(None, 80)
-    text = 'Test'
-    #size = font.size(text)
-
-    render_text = font.render(text, 0, (250, 250, 250), (5, 5, 5))
-    window.blit(render_text, (0, 0))
-
-    pygame.display.flip()
-    run = True
-    while run:
-        
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                run = False
-
-
-    
     now = datetime.now()
-    cur_time = str(now.hour) + ":" + str(now.minute)
-    print(cur_time)
+    hour = now.hour
+    minute = now.minute
+    second = now.second
+    binary_time(hour, minute, second)
     
-    binary_time(cur_time)
+    BinaryClock = Tk()
+    BinaryClock.title("Binary Clock")
+
+    label = Label(BinaryClock, text=binary_time(hour, minute, second))
+    label.pack()
+
+    BinaryClock.mainloop()
 
     return 0;
 

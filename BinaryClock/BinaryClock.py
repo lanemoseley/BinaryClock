@@ -1,3 +1,16 @@
+###############################################################################
+#
+# Program Name: BinaryClock
+# Author: Lane Moseley
+# Date: 08/01/2018
+# 
+# Description: 
+# Program retrieves the current time and displays it to the user in a Tkinter
+# window in binary format. The time is refreshed every 200 milliseconds.
+# 
+###############################################################################
+
+
 from tkinter import *
 from datetime import datetime
 
@@ -10,35 +23,53 @@ label = Label(BinaryClock, text="Current Time")
 label.pack()
 
 # Canvas
-canvas = Canvas(BinaryClock, width=420, height=420)
+canvas = Canvas(BinaryClock, width=320, height=320)
 canvas.pack()
     
-# Clock Background, Image Copyright Algot Runeman 2013, CC0 (Creative Commons), http://runeman.org/articles/binary-clock/
+# Background Image
+# (Algot Runeman 2013, CC0, http://runeman.org/articles/binary-clock/)
 clock = PhotoImage(file="BinaryClock.png")    
 canvas.create_image(0, 0, anchor=NW, image=clock)
 
-# Time Indicators
+# Indicator Image
 indicator = PhotoImage(file="dot.png")
-    
+  
 
+###############################################################################
+# 
+# Function: display_clock
+# Author: Lane Moseley
+#
+# Description:
+# This function retrieves the current time. The time data is separated into
+# hours, minutes, and seconds. The function then clears the canvas of any time
+# indicators left over from a previous run. Next, the function determines the
+# binary value of each time value and places a red dot on the canvas in the
+# appropriate location.
+#
+# Parameters:
+# None
+#
+# Returns:
+# None
+#
+###############################################################################
 def display_clock():
-    
-    #Get Current Time
+    # Get current time
     now = datetime.now()
     hour = now.hour
     minute = now.minute
     second = now.second
     time = [hour, minute, second]
 
-    #Clear Canvas
+    # Clear canvas of previous time indicators
     canvas.delete("ind")
 
     while time[0] > 0:
-        # Hours > 20 (Scalar)
+        # Hours
         if time[0] > 20:
             canvas.create_image(7, 161, anchor=NW, image=indicator, tags="ind")
             time[0] -= 20
-        # Hours > 10 (Scalar)
         elif time[0] > 10:
             canvas.create_image(7, 209, anchor=NW, image=indicator, tags="ind")
             time[0] -= 10
@@ -122,9 +153,10 @@ def display_clock():
             canvas.create_image(247, 209, anchor=NW, image=indicator, tags="ind")
             time[2] -= 1
 
-    
+    # Refresh clock with current time
     BinaryClock.after(200, display_clock)
     
 
+# Display Clock
 display_clock()
 BinaryClock.mainloop()

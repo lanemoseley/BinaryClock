@@ -55,15 +55,15 @@ indicator = PhotoImage(file="dot.png")
 #
 ###############################################################################
 def display_clock():
+    # Clear canvas of previous time indicators
+    canvas.delete("ind")
+
     # Get current time
     now = datetime.now()
     hour = now.hour
     minute = now.minute
     second = now.second
     time = [hour, minute, second]
-
-    # Clear canvas of previous time indicators
-    canvas.delete("ind")
 
     while time[0] > 0:
         # Hours

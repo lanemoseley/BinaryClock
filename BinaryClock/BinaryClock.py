@@ -1,16 +1,11 @@
-###############################################################################
-#
-# Program Name: BinaryClock
-# Author: Lane Moseley
-# Date: 08/01/2018
-# 
-# Description: 
-# Program retrieves the current time and displays it to the user in a Tkinter
-# window in binary format. The time is refreshed every 200 milliseconds.
-# 
-###############################################################################
-
-
+"""
+Program Name: Binary Clock
+Author: Lane Moseley
+Date: 08/01/2018
+Description: The program retrieves the current time and displays it to the
+             user in a GUI window in binary format. The time is refreshed
+             every 200 milliseconds.
+"""
 from tkinter import *
 from datetime import datetime
 
@@ -31,26 +26,14 @@ canvas.create_image(0, 0, anchor=NW, image=clock)
 indicator = PhotoImage(file="dot.png")
   
 
-###############################################################################
-# 
-# Function: display_clock
-# Author: Lane Moseley
-#
-# Description:
-# This function retrieves the current time. The time data is separated into
-# hours, minutes, and seconds. The function then clears the canvas of any time
-# indicators left over from a previous run. Next, the function determines the
-# binary value of each time value and places a red dot on the canvas in the
-# appropriate location.
-#
-# Parameters:
-# None
-#
-# Returns:
-# None
-#
-###############################################################################
 def display_clock():
+    """
+    This function retrieves the current time. The time data is separated into
+    hours, minutes, and seconds. The function then clears the canvas of any time
+    indicators left over from a previous run. Next, the function determines the
+    binary value of each time value and places a red dot on the canvas in the
+    appropriate location.
+    """
     # Clear canvas of previous time indicators
     canvas.delete("ind")
 

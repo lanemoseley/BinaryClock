@@ -9,12 +9,15 @@ Description: The program retrieves the current time and displays it to the
 from tkinter import *
 from datetime import datetime
 
+# Constants for the indicator's X location (the 10's and 1's columns)
 HOURS_10 = 7
 HOURS_1 = 55
 MINUTES_10 = 103
 MINUTES_1 = 151
 SECONDS_10 = 199
 SECONDS_1 = 247
+
+# Constants for the indicator's Y location (the binary value)
 ROW_1 = 209
 ROW_2 = 161
 ROW_4 = 113

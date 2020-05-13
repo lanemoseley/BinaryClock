@@ -18,10 +18,6 @@ from datetime import datetime
 BinaryClock = Tk()
 BinaryClock.title("Binary Clock")
 
-# Label
-label = Label(BinaryClock, text="Current Time")
-label.pack()
-
 # Canvas
 canvas = Canvas(BinaryClock, width=320, height=320)
 canvas.pack()

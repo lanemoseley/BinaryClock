@@ -33,11 +33,11 @@ canvas.pack()
     
 # Background Image
 # (Algot Runeman 2013, CC0, http://runeman.org/articles/binary-clock/)
-clock = PhotoImage(file="BinaryClock.png")    
+clock = PhotoImage(file="resources/images/BinaryClock.png")    
 canvas.create_image(0, 0, anchor=NW, image=clock)
 
 # Indicator Image
-indicator = PhotoImage(file="dot.png")
+indicator = PhotoImage(file="resources/images/dot.png")
 
 
 def display_clock():

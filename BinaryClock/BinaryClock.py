@@ -57,15 +57,12 @@ def display_clock():
     second = datetime.now().second
 
     while hour > 0:
-        # Hours
         if hour > 20:
             canvas.create_image(HOURS_10, ROW_2, anchor=NW, image=indicator, tags="ind")
             hour -= 20
         elif hour > 10:
-            canvas.create_image(HOURS_10, ROW_1
-        , anchor=NW, image=indicator, tags="ind")
+            canvas.create_image(HOURS_10, ROW_1, anchor=NW, image=indicator, tags="ind")
             hour -= 10
-        # Hours < 10
         elif hour % 8 == 0:
             canvas.create_image(HOURS_1, ROW_8, anchor=NW, image=indicator, tags="ind")
             hour -= 8
@@ -81,28 +78,23 @@ def display_clock():
             hour -= 1
     
     while minute > 0:
-        # Minutes
         if minute > 50:
-            canvas.create_image(MINUTES_10, ROW_1
-        , anchor=NW, image=indicator, tags="ind")
+            canvas.create_image(MINUTES_10, ROW_1, anchor=NW, image=indicator, tags="ind")
             canvas.create_image(MINUTES_10, ROW_4, anchor=NW, image=indicator, tags="ind")
             minute -= 50
         elif minute > 40:
             canvas.create_image(MINUTES_10, ROW_4, anchor=NW, image=indicator, tags="ind")
             minute -= 40
         elif minute > 30:
-            canvas.create_image(MINUTES_10, ROW_1
-        , anchor=NW, image=indicator, tags="ind")
+            canvas.create_image(MINUTES_10, ROW_1, anchor=NW, image=indicator, tags="ind")
             canvas.create_image(MINUTES_10, ROW_2, anchor=NW, image=indicator, tags="ind")
             minute -= 30
         elif minute > 20:
             canvas.create_image(MINUTES_10, ROW_2, anchor=NW, image=indicator, tags="ind")
             minute -= 20
         elif minute > 10:
-            canvas.create_image(MINUTES_10, ROW_1
-        , anchor=NW, image=indicator, tags="ind")
+            canvas.create_image(MINUTES_10, ROW_1, anchor=NW, image=indicator, tags="ind")
             minute -= 10
-        # Minutes < 10
         elif minute % 8 == 0:
             canvas.create_image(MINUTES_1, ROW_8, anchor=NW, image=indicator, tags="ind")
             minute -= 8
@@ -113,33 +105,27 @@ def display_clock():
             canvas.create_image(MINUTES_1, ROW_2, anchor=NW, image=indicator, tags="ind")
             minute -= 2
         else:
-            canvas.create_image(MINUTES_1, ROW_1
-        , anchor=NW, image=indicator, tags="ind")
+            canvas.create_image(MINUTES_1, ROW_1, anchor=NW, image=indicator, tags="ind")
             minute -= 1
    
     while second > 0:
-        # Seconds
         if second > 50:
-            canvas.create_image(SECONDS_10, ROW_1
-        , anchor=NW, image=indicator, tags="ind")
+            canvas.create_image(SECONDS_10, ROW_1, anchor=NW, image=indicator, tags="ind")
             canvas.create_image(SECONDS_10, ROW_4, anchor=NW, image=indicator, tags="ind")
             second -= 50
         elif second > 40:
             canvas.create_image(SECONDS_10, ROW_4, anchor=NW, image=indicator, tags="ind")
             second -= 40
         elif second > 30:
-            canvas.create_image(SECONDS_10, ROW_1
-        , anchor=NW, image=indicator, tags="ind")
+            canvas.create_image(SECONDS_10, ROW_1, anchor=NW, image=indicator, tags="ind")
             canvas.create_image(SECONDS_10, ROW_2, anchor=NW, image=indicator, tags="ind")
             second -= 30
         elif second > 20:
             canvas.create_image(SECONDS_10, ROW_2, anchor=NW, image=indicator, tags="ind")
             second -= 20
         elif second > 10:
-            canvas.create_image(SECONDS_10, ROW_1
-        , anchor=NW, image=indicator, tags="ind")
+            canvas.create_image(SECONDS_10, ROW_1, anchor=NW, image=indicator, tags="ind")
             second -= 10
-        # Seconds < 10
         elif second % 8 == 0:
             canvas.create_image(SECONDS_1, ROW_8, anchor=NW, image=indicator, tags="ind")
             second -= 8
@@ -150,8 +136,7 @@ def display_clock():
             canvas.create_image(SECONDS_1, ROW_2, anchor=NW, image=indicator, tags="ind")
             second -= 2
         else:
-            canvas.create_image(SECONDS_1, ROW_1
-        , anchor=NW, image=indicator, tags="ind")
+            canvas.create_image(SECONDS_1, ROW_1, anchor=NW, image=indicator, tags="ind")
             second -= 1
 
     # Refresh clock with current time
